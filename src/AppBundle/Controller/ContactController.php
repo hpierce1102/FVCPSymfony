@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Services\ContactSubmitter\ContactSubmitterInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -17,8 +18,19 @@ class ContactController extends Controller
         $name = $request->request->get('name') ?? null;
         $message = $request->request->get('message') ?? null;
 
-        $contactSubmitter = $this->get('contact_logger');
-        $contactSubmitter->submit($name, $message);
+        // I'm certain there is a better way of loading enabled services
+        // but I think it involves exotic service configuration settings.
+        // This is done for simplicity.
+        $enabledContactLoggers = $this->getParameter('enabled_contact_submitters');
+
+        /** @var ContactSubmitterInterface[] $enabledContactLoggers */
+        $enabledContactLoggers = array_map(function($serviceName){
+            return $this->get($serviceName);
+        }, $enabledContactLoggers);
+
+        foreach($enabledContactLoggers as $logger){
+            $logger->submit($name, $message);
+        }
 
         return $this->redirectToRoute('thank_you');
     }

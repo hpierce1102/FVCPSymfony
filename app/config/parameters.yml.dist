@@ -20,5 +20,7 @@ parameters:
     #path to output log files. Example: "/home/hpierce/PhpstormProjects/fvcp/var/log.txt";
     logger_path:
 
+    enabled_contact_submitters: [ "contact_mailer", "contact_logger" ]
+
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
