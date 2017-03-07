@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Services;
+namespace AppBundle\Services\ContactSubmitter;
 
 class ContactMailer implements ContactSubmitterInterface
 {
@@ -14,7 +14,7 @@ class ContactMailer implements ContactSubmitterInterface
         $this->targetInbox = $targetInbox;
     }
 
-    public function submit($name, $message)
+    public function submit(String $name, String $message) : bool
     {
         $swiftMessage = \Swift_Message::newInstance();
         $swiftMessage->setSubject('New message');

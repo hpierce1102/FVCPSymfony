@@ -17,7 +17,7 @@ class ContactController extends Controller
         $name = $request->request->get('name') ?? null;
         $message = $request->request->get('message') ?? null;
 
-        $contactSubmitter = $this->get('contact_mailer');
+        $contactSubmitter = $this->get('contact_logger');
         $contactSubmitter->submit($name, $message);
 
         return $this->redirectToRoute('thank_you');

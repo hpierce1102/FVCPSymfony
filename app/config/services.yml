@@ -5,8 +5,12 @@ parameters:
 
 services:
   contact_mailer:
-    class: AppBundle\Services\ContactMailer
+    class: AppBundle\Services\ContactSubmitter\ContactMailer
     arguments: ["@mailer", "%target_inbox%"]
+
+  contact_logger:
+    class: AppBundle\Services\ContactSubmitter\ContactLogger
+    arguments: ["%logger_path%"]
 
 
 #    service_name:
