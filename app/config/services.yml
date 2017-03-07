@@ -4,6 +4,11 @@ parameters:
 #    parameter_name: value
 
 services:
+  contact_mailer:
+    class: AppBundle\Services\ContactMailer
+    arguments: ["@mailer", "%target_inbox%"]
+
+
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
