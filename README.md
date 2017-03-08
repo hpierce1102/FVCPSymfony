@@ -19,7 +19,6 @@ Add various parameters in parameters.yml:
     mailer_user: /** Gmail account **/
     mailer_password: /** Gmail password **/
     target_inbox: /** Any email account **/
-    logger_path: /** some path to a file. **/
 
 Start the project with:
 
