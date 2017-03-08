@@ -30,14 +30,14 @@ Start the project with:
 Goals:
 ======
 
-* Introduce the most critical components of Symfony apps so that a beginner could theoretically do something with Symfony give only this. .
-* Utilize as few components as possible to prevent (as much as possible) information overload.
+* Introduce the most critical components of Symfony apps so that a beginner could theoretically do something with Symfony give only this.
+* Utilize as few components as possible to prevent information overload (as much as possible).
 * Introduce the M, V, and C of Symfony
 
 Non Goals:
 ==========
 
-* **Utilize Symfony best practices.**
+* **Utilize Symfony best practices.** A better repository maintained by Symfony is available here: [symfony/symfony-demo](https://github.com/symfony/symfony-demo).
 * Report errors in any legitimately helpful way.
 * Optimize for performance.
 

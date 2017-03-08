@@ -8,11 +8,6 @@ services:
     class: AppBundle\Services\ContactSubmitter\ContactMailer
     arguments: ["@mailer", "%target_inbox%"]
 
-  contact_logger:
-    class: AppBundle\Services\ContactSubmitter\ContactLogger
-    arguments: ["%logger_path%"]
-
-
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]

@@ -10,7 +10,8 @@ class ContactController extends Controller
 {
     public function renderFormAction()
     {
-        return $this->render('contact/contactForm.html.twig');
+        $htmlResponse = $this->render('contact/contactForm.html.twig');
+        return $htmlResponse;
     }
 
     public function submitFormAction(Request $request)
@@ -18,25 +19,10 @@ class ContactController extends Controller
         $name = $request->request->get('name') ?? null;
         $message = $request->request->get('message') ?? null;
 
-        // I'm certain there is a better way of loading enabled services
-        // but I think it involves exotic service configuration settings.
-        // This is done for simplicity.
-        $enabledContactLoggers = $this->getParameter('enabled_contact_submitters');
+        /** @var ContactSubmitterInterface $contactor */
+        $contact = $this->get('contact_mailer');
+        $contact->submit($name, $message);
 
-        /** @var ContactSubmitterInterface[] $enabledContactLoggers */
-        $enabledContactLoggers = array_map(function($serviceName){
-            return $this->get($serviceName);
-        }, $enabledContactLoggers);
-
-        foreach($enabledContactLoggers as $logger){
-            $logger->submit($name, $message);
-        }
-
-        return $this->redirectToRoute('thank_you');
-    }
-
-    public function thankYouAction()
-    {
         return $this->render('contact/thankYou.html.twig');
     }
 }

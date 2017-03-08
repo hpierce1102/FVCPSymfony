@@ -10,7 +10,3 @@ submit_contact:
   path: /submit
   defaults: { _controller: AppBundle:Contact:submitForm}
   methods: [ POST ]
-
-thank_you:
-  path: /thankYou
-  defaults: { _controller: AppBundle:Contact:thankYou}
